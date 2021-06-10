@@ -1,5 +1,8 @@
 package com.example.locadoraempinamoto.ui.moto;
 
+import android.content.Intent;
+import android.view.View;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -16,4 +19,6 @@ public class MotoViewModel extends ViewModel {
     public LiveData<String> getText() {
         return mText;
     }
+
+
 }

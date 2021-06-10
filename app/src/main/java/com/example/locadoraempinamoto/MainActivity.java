@@ -1,8 +1,11 @@
 package com.example.locadoraempinamoto;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 
+import com.example.locadoraempinamoto.ui.moto.MotoCadastroActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -53,5 +56,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void newMoto(View view){
+        Intent intent = new Intent(this, MotoCadastroActivity.class);
+        startActivity(intent);
     }
 }

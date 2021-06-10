@@ -10,4 +10,7 @@
     <string name="menu_moto">Moto</string>
     <string name="menu_client">Cliente</string>
     <string name="menu_rent">Locação</string>
+    <string name="title_activity_moto_cadastro">MotoCadastroActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>
