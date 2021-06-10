@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_moto"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="@string/menu_moto" />
+        <item
+            android:id="@+id/nav_client"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="@string/menu_client" />
+        <item
+            android:id="@+id/nav_rent"
+            android:icon="@android:drawable/ic_menu_month"
+            android:title="@string/menu_rent" />
+    </group>
+</menu>
