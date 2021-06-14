@@ -15,4 +15,197 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/motoCategoriaField"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/fieldLeft"
+        android:layout_marginTop="@dimen/fieldTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titlenewMoto" />
+
+    <TextView
+        android:id="@+id/motoCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/motoCategoria"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/motoCategoriaField" />
+
+    <EditText
+        android:id="@+id/motoMarcaField"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/fieldLeft"
+        android:layout_marginTop="@dimen/fieldTop"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motoCategoriaField" />
+
+    <TextView
+        android:id="@+id/motoMarca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/motoMarca"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/motoMarcaField" />
+
+    <EditText
+        android:id="@+id/motoModeloField"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/fieldLeft"
+        android:layout_marginTop="@dimen/fieldTop"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motoMarcaField" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/motoModelo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/motoModeloField" />
+
+    <EditText
+        android:id="@+id/motoAnoField"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/fieldLeft"
+        android:layout_marginTop="@dimen/fieldTop"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motoModeloField" />
+
+    <TextView
+        android:id="@+id/motoAno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/motoAno"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/motoAnoField" />
+
+    <Spinner
+        android:id="@+id/motoTipoMotorField"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/fieldLeft"
+        android:layout_marginTop="@dimen/fieldTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motoAnoField" />
+
+    <TextView
+        android:id="@+id/motoTipoMotor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/motoTipoMotor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/motoTipoMotorField" />
+
+    <EditText
+        android:id="@+id/motoCapTanqueField"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/fieldLeft"
+        android:layout_marginTop="@dimen/fieldTop"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motoTipoMotorField" />
+
+    <TextView
+        android:id="@+id/motoCapTanque"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/motoCapTanque"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/motoCapTanqueField" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal2"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/fieldLeft"
+        android:layout_marginTop="@dimen/fieldTop"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motoCapTanqueField" />
+
+    <TextView
+        android:id="@+id/motoMediaConsumo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/motoMediaConsumo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextNumberDecimal2" />
+
+    <EditText
+        android:id="@+id/motoValorCustoField"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/fieldLeft"
+        android:layout_marginTop="@dimen/fieldTop"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal2" />
+
+    <TextView
+        android:id="@+id/motoValorCusto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/motoValorCusto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/motoValorCustoField" />
+
+    <Spinner
+        android:id="@+id/motoAcessorioField"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/fieldLeft"
+        android:layout_marginTop="@dimen/fieldTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motoValorCustoField" />
+
+    <TextView
+        android:id="@+id/motoAcessorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/motoAcessorio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/motoAcessorioField" />
+
+    <Button
+        android:id="@+id/motoSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fieldTop"
+        android:text="@string/buttonSave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motoAcessorioField" />
 </androidx.constraintlayout.widget.ConstraintLayout>

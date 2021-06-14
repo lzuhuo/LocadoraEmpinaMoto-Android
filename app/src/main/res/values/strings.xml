@@ -107,4 +107,14 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="titlenewMoto">Cadastro de nova motocicleta</string>
+    <string name="motoCategoria">Categoria</string>
+    <string name="motoMarca">Marca</string>
+    <string name="motoModelo">Modelo</string>
+    <string name="motoAno">Ano</string>
+    <string name="motoTipoMotor">Motor</string>
+    <string name="motoCapTanque">Cap. Tanque</string>
+    <string name="motoMediaConsumo">Media Consumo</string>
+    <string name="motoValorCusto">Valor Custo</string>
+    <string name="motoAcessorio">Acessórios</string>
+    <string name="buttonSave">Salvar</string>
 </resources>
