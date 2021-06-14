@@ -9,7 +9,16 @@
         android:id="@+id/nav_moto"
         android:name="com.example.locadoraempinamoto.ui.moto.MotoFragment"
         android:label="@string/menu_moto"
-        tools:layout="@layout/fragment_moto" />
+        tools:layout="@layout/fragment_moto" >
+        <action
+            android:id="@+id/action_nav_moto_to_nav_moto_item"
+            app:destination="@id/nav_moto_item" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_moto_item"
+        android:name="com.example.locadoraempinamoto.ui.moto.MotoItemFragment"
+        android:label="@string/menu_moto_item"
+        tools:layout="@layout/fragment_moto_item" />
 
     <fragment
         android:id="@+id/nav_client"
@@ -22,4 +31,5 @@
         android:name="com.example.locadoraempinamoto.ui.locacao.LocacaoFragment"
         android:label="@string/menu_rent"
         tools:layout="@layout/fragment_locacao" />
+
 </navigation>

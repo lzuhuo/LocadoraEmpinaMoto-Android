@@ -1,11 +1,11 @@
 package com.example.locadoraempinamoto.ui.moto;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,21 +14,20 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.locadoraempinamoto.R;
 import com.example.locadoraempinamoto.databinding.FragmentMotoBinding;
+import com.example.locadoraempinamoto.databinding.FragmentMotoItemBinding;
 
-public class MotoFragment extends Fragment implements View.OnClickListener {
+public class MotoItemFragment extends Fragment implements View.OnClickListener {
 
     private MotoViewModel homeViewModel;
-    private FragmentMotoBinding binding;
+    private FragmentMotoItemBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(MotoViewModel.class);
 
-        binding = FragmentMotoBinding.inflate(inflater, container, false);
+        homeViewModel = new ViewModelProvider(this).get(MotoViewModel.class);
+        binding = FragmentMotoItemBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        root.findViewById(R.id.addMoto).setOnClickListener(this);
 
         return root;
     }
@@ -41,9 +40,10 @@ public class MotoFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        FragmentTransaction fr = getFragmentManager().beginTransaction();
-        fr.replace(R.id.nav_host_fragment_content_main, new MotoItemFragment());
-        fr.commit();
+
+
+        Log.e("Fragmento","qual é o erro");
         /*Toast.makeText(getActivity(),"Abrindo novo cadastro",Toast.LENGTH_SHORT).show();*/
     }
+
 }
