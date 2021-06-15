@@ -117,4 +117,5 @@
     <string name="motoValorCusto">Valor Custo</string>
     <string name="motoAcessorio">Acessórios</string>
     <string name="buttonSave">Salvar</string>
+    <string name="buttonCancel">Cancelar</string>
 </resources>

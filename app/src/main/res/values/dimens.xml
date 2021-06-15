@@ -10,5 +10,5 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="fieldLeft">130dp</dimen>
-    <dimen name="fieldTop">20dp</dimen>
+    <dimen name="fieldTop">5dp</dimen>
 </resources>

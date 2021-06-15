@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.locadoraempinamoto.R;
 import com.example.locadoraempinamoto.databinding.FragmentMotoItemBinding;
 
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class MotoItemFragment extends Fragment implements View.OnClickListener {
         binding = FragmentMotoItemBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         root.findViewById(R.id.motoSave).setOnClickListener(this);
+        root.findViewById(R.id.motoCancel).setOnClickListener(this::backFragment);
 
         return root;
     }
@@ -99,14 +101,17 @@ public class MotoItemFragment extends Fragment implements View.OnClickListener {
         builder.setMessage("Moto cadastrada com sucesso!");
         builder.setNeutralButton("Continuar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Toast.makeText(getActivity(), "Voltando ao menu", Toast.LENGTH_SHORT).show();
+                backFragment(getView());
             }
         });
-
         saveAlert = builder.create();
         saveAlert.show();
-        Log.e("Fragmento","qual é o erro");
-        /*Toast.makeText(getActivity(),"Abrindo novo cadastro",Toast.LENGTH_SHORT).show();*/
+    }
+
+    public void backFragment(View view){
+        FragmentTransaction fr = getFragmentManager().beginTransaction();
+        fr.replace(R.id.nav_host_fragment_content_main, new MotoFragment());
+        fr.commit();
     }
 
 }
