@@ -19,8 +19,12 @@ public class MotoFragment extends Fragment implements View.OnClickListener {
 
     private MotoViewModel homeViewModel;
     private FragmentMotoBinding binding;
+
     private RecyclerView recyclerView;
-    /*private MotoAdapter adapter;*/
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private String[] langs = {"Java", "C#", "Javascript"};
+    private View listItemsView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -29,6 +33,17 @@ public class MotoFragment extends Fragment implements View.OnClickListener {
 
         binding = FragmentMotoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+
+
+        root = inflater.inflate(R.layout.fragment_moto, container, false);
+        recyclerView = root.findViewById(R.id.listVMotos);
+
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new ListAdapter(langs);
+        recyclerView.setAdapter(adapter);
 
         root.findViewById(R.id.addMoto).setOnClickListener(this);
 
@@ -58,6 +73,4 @@ public class MotoFragment extends Fragment implements View.OnClickListener {
         /*Toast.makeText(getActivity(),"Abrindo novo cadastro",Toast.LENGTH_SHORT).show();*/
     }
 
-    /*public static class MotoAdapter extends RecyclerView.Adapter<PasswordsViewHolder>{
-    }*/
 }
