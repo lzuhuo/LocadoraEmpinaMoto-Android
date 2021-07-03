@@ -3,7 +3,7 @@ package com.example.locadoraempinamoto.db;
 import java.sql.*;
 
 public class Config {
-    private static String javaDB = "./UFAM-PP-TP01/src/db/moto.db";
+    private static String javaDB = "/data/data/com.example.locadoraempinamoto/databases/moto.db";
     
     
     private static String url = "jdbc:sqlite:"+ javaDB;

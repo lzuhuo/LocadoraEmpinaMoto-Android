@@ -12,6 +12,8 @@
         android:layout_height="40dp"
         android:layout_marginStart="@dimen/fieldLeft"
         android:layout_marginTop="20dp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -129,7 +131,7 @@
         app:layout_constraintTop_toTopOf="@+id/motoCapTanqueField" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal2"
+        android:id="@+id/motoMediaConsumoField"
         android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginStart="@dimen/fieldLeft"
@@ -147,7 +149,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/motoMediaConsumo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumberDecimal2" />
+        app:layout_constraintTop_toTopOf="@+id/motoMediaConsumoField" />
 
     <EditText
         android:id="@+id/motoValorCustoField"
@@ -158,7 +160,7 @@
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal2" />
+        app:layout_constraintTop_toBottomOf="@+id/motoMediaConsumoField" />
 
     <TextView
         android:id="@+id/motoValorCusto"

@@ -1,8 +1,12 @@
 package com.example.locadoraempinamoto.business;
+import android.content.Context;
+import android.database.Cursor;
+
 import java.sql.*;
 import java.util.ArrayList;
 
 import com.example.locadoraempinamoto.db.Config;
+import com.example.locadoraempinamoto.db.DatabaseAccess;
 import com.example.locadoraempinamoto.model.Message;
 import com.example.locadoraempinamoto.model.Moto.Moto;
 import com.example.locadoraempinamoto.model.Categoria.Acessorio;

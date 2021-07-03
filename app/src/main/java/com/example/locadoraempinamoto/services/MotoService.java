@@ -40,6 +40,8 @@ public class MotoService {
         return motos;
     }
 
+
+
     public ArrayList<com.example.locadoraempinamoto.model.Categoria.Moto> listarCatMotos(){
         ArrayList<com.example.locadoraempinamoto.model.Categoria.Moto> motos = new ArrayList<com.example.locadoraempinamoto.model.Categoria.Moto>();
         com.example.locadoraempinamoto.business.Categoria.MotoDAO conectaMotos = new com.example.locadoraempinamoto.business.Categoria.MotoDAO();
