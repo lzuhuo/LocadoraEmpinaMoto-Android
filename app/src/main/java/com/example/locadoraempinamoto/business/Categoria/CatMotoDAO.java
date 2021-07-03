@@ -5,36 +5,35 @@ import android.database.Cursor;
 
 import java.sql.*;
 import java.util.ArrayList;
+
 import com.example.locadoraempinamoto.db.Config;
 import com.example.locadoraempinamoto.db.DatabaseAccess;
-import com.example.locadoraempinamoto.model.Categoria.Motor;
+import com.example.locadoraempinamoto.model.Categoria.CatMoto;
 
-
-public class MotorDAO extends Config{
+public class CatMotoDAO extends Config{
     private DatabaseAccess dA;
 
-    public MotorDAO(Context context){
+    public CatMotoDAO(Context context){
         this.dA = DatabaseAccess.getInstance(context);
     }
-
-    public ArrayList<Motor> listarMotor(){
-        ArrayList<Motor> motor = new ArrayList<Motor>();
+    public ArrayList<CatMoto> listarMotos(){
+        ArrayList<CatMoto> catMotos = new ArrayList<CatMoto>();
         dA.open();
         try{
             Cursor c = dA.database.rawQuery(
-                    "SELECT * FROM categorias_motor WHERE ST_ATIVO='S'",
+                    "SELECT CD_CATEGORIA, DS_CATEGORIA FROM categorias_motos WHERE ST_ATIVO='S'",
                     null);
 
             c.moveToFirst();
             while (!c.isAfterLast()) {
-                motor.add(new Motor(
-                        c.getInt(c.getColumnIndex("CD_MOTOR")),
-                        c.getString(c.getColumnIndex("DS_MOTOR"))));
+                catMotos.add(new CatMoto(
+                        c.getInt(c.getColumnIndex("CD_CATEGORIA")),
+                        c.getString(c.getColumnIndex("DS_CATEGORIA"))));
                 c.moveToNext();
             }
             c.close();
             dA.close();
-            return motor;
+            return catMotos;  
         }catch( Exception e){ return null;}
     }
 }

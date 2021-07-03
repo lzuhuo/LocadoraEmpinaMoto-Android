@@ -1,60 +1,65 @@
 package com.example.locadoraempinamoto.business.Categoria;
 
-import java.sql.*;
-import java.util.ArrayList;
-import com.example.locadoraempinamoto.db.Config;
-import com.example.locadoraempinamoto.model.Message;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.util.Log;
+
+import com.example.locadoraempinamoto.db.DatabaseAccess;
 import com.example.locadoraempinamoto.model.Categoria.Acessorio;
+import com.example.locadoraempinamoto.model.Message;
 import com.example.locadoraempinamoto.model.Moto.AcessorioMoto;
+import java.util.ArrayList;
 
-
-public class AcessorioDAO extends Config{
-    public ArrayList<Acessorio> listarAcessorios(){
-        ArrayList<Acessorio> catAcessorios = new ArrayList<Acessorio>();
-        try{
-            Statement st = conexao.createStatement();
-            ResultSet rs = st.executeQuery("SELECT CD_ACESSORIO, DS_ACESSORIO FROM acessorios WHERE ST_ATIVO='S'");
-            while (rs.next()) {
-                catAcessorios.add(new Acessorio(rs.getInt(1), rs.getString(2)));
-            }
-            return catAcessorios;  
-        }catch( SQLException e){ return null;}
+public class AcessorioDAO {
+    private DatabaseAccess dA;
+    public AcessorioDAO(Context context){
+        this.dA = DatabaseAccess.getInstance(context);
     }
 
     //CLAPM
     public ArrayList<Acessorio> listarAcessoriosPorMoto(int codigo){
         ArrayList<Acessorio> catAcessorios = new ArrayList<Acessorio>();
         try{
-            Statement st = conexao.createStatement();
+            dA.open();
             String sql = " SELECT  AC.CD_ACESSORIO,                 " +
-                         "         AC.DS_ACESSORIO                  " +
-                         " FROM acessorios AS AC                    " +
-                         " INNER JOIN acessorios_moto as AM         " +
-                         " ON AM.CD_ACESSORIO = AC.CD_ACESSORIO     " +
-                         " WHERE AM.CD_MOTO = " + codigo;
-            
-    
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                catAcessorios.add(new Acessorio(rs.getInt(1), rs.getString(2)));
+                    "         AC.DS_ACESSORIO                  " +
+                    " FROM acessorios AS AC                    " +
+                    " INNER JOIN acessorios_moto as AM         " +
+                    " ON AM.CD_ACESSORIO = AC.CD_ACESSORIO     " +
+                    " WHERE AM.CD_MOTO = " + codigo;
+
+
+            Cursor c = dA.database.rawQuery(sql, null);
+            c.moveToFirst();
+            while (!c.isAfterLast()) {
+                catAcessorios.add(new Acessorio(c.getInt(0), c.getString(1)));
+                c.moveToNext();
             }
-            return catAcessorios;  
-        }catch( SQLException e){ return null;}
+            c.close();
+            dA.close();
+            return catAcessorios;
+        }catch( Exception e){
+            Log.d("catAcess", "Deu erro!");
+            return null;}
     }
 
     //CIAM
-    public Message inserirAcessorioMoto(AcessorioMoto c){
+    public Message inserirAcessorioMoto(AcessorioMoto am){
         Message resp;
         try{
-            Statement st = conexao.createStatement();
-            st.executeUpdate("INSERT INTO acessorios_moto VALUES (" 
-                             + c.CD_MOTO + ","
-                             + c.CD_ACESSORIO + ")");
-            resp = new Message(true, "success",c.CD_MOTO);
-            st.close();
+            dA.open();
+            ContentValues values = new ContentValues();
+            values.put("CD_MOTO",am.CD_MOTO);
+            values.put("CD_ACESSORIO",am.CD_ACESSORIO);
+
+            dA.database.insert("acessorios_moto", null, values);
+
+            resp = new Message(true, "success",am.CD_MOTO);
+            dA.close();
             return resp;
-        }catch (SQLException e) {
-            resp = new Message(false, "error:CIAM" + e.toString(),c.CD_MOTO);
+        }catch (Exception e) {
+            resp = new Message(false, "error:CIAM" + e.toString(),am.CD_MOTO);
             return resp;
         }
     }
@@ -63,12 +68,12 @@ public class AcessorioDAO extends Config{
     public Message removeAcessorioMoto(int CD_MOTO){
         Message resp;
         try{
-            Statement st = conexao.createStatement();
-            st.executeUpdate("DELETE FROM acessorios_moto WHERE CD_MOTO=" + CD_MOTO );
+            dA.open();
+            dA.database.execSQL("DELETE FROM acessorios_moto WHERE CD_MOTO=" + CD_MOTO);
             resp = new Message(true, "success",CD_MOTO);
-            st.close();
+            dA.close();
             return resp;
-        }catch (SQLException e) {
+        }catch (Exception e) {
             resp = new Message(false, "error:CRAM" + e.toString(),CD_MOTO);
             return resp;
         }

@@ -1,5 +1,7 @@
 package com.example.locadoraempinamoto.services;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import com.example.locadoraempinamoto.business.ClienteDAO;
@@ -7,9 +9,14 @@ import com.example.locadoraempinamoto.model.Message;
 import com.example.locadoraempinamoto.model.Cliente.Cliente;
 
 public class ClienteService {
+    private Context context;
+    public ClienteService(Context data){
+        this.context = data;
+    }
+
     public Cliente getCliente(int CD_CLIENTE){
         Cliente cliente = new Cliente();
-        ClienteDAO clienteDAO = new ClienteDAO();
+        ClienteDAO clienteDAO = new ClienteDAO(context);
         try {
             cliente = clienteDAO.getCliente(CD_CLIENTE);
         } catch (Exception e) {
@@ -20,7 +27,7 @@ public class ClienteService {
 
     public ArrayList<Cliente> getClientes(String NR_CNH){
         ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-        ClienteDAO clienteDAO = new ClienteDAO();
+        ClienteDAO clienteDAO = new ClienteDAO(context);
         try {
             clientes = clienteDAO.getClientes(NR_CNH);
         } catch (Exception e) {
@@ -31,7 +38,7 @@ public class ClienteService {
 
     public ArrayList<Cliente> listarClientes(){
         ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-        ClienteDAO clienteDAO = new ClienteDAO();
+        ClienteDAO clienteDAO = new ClienteDAO(context);
         try {
             clientes = clienteDAO.listarClientes();
         } catch (Exception e) {
@@ -41,7 +48,7 @@ public class ClienteService {
     }
 
     public Message inserirCliente(Cliente c){
-        ClienteDAO clienteDAO = new ClienteDAO();
+        ClienteDAO clienteDAO = new ClienteDAO(context);
         Message  messageCliente;
         try {
             messageCliente = clienteDAO.adicionaCliente(c);
@@ -52,7 +59,7 @@ public class ClienteService {
     }
 
     public Message atualizarCliente(Cliente c){
-        ClienteDAO clienteDAO = new ClienteDAO();
+        ClienteDAO clienteDAO = new ClienteDAO(context);
         Message messageCliente;
         try {
             messageCliente = clienteDAO.atualizaCliente(c);
@@ -63,7 +70,7 @@ public class ClienteService {
     }
 
     public Boolean removeCliente(int CD_CLIENTE){
-        ClienteDAO clienteDAO = new ClienteDAO();
+        ClienteDAO clienteDAO = new ClienteDAO(context);
         Boolean resultado = false;
         try {
             resultado = clienteDAO.removeCliente(CD_CLIENTE);

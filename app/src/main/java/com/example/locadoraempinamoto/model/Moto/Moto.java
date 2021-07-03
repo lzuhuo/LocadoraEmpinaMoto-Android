@@ -3,10 +3,11 @@ package com.example.locadoraempinamoto.model.Moto;
 import java.util.ArrayList;
 
 import com.example.locadoraempinamoto.model.Categoria.Acessorio;
+import com.example.locadoraempinamoto.model.Categoria.CatMoto;
 
 public class Moto {
     public int CD_MOTO;
-    public com.example.locadoraempinamoto.model.Categoria.Moto CATMOTO;
+    public CatMoto CATMOTO;
     public String DS_MARCA;
     public String DS_MODELO;
     public int NR_ANO;
@@ -18,9 +19,9 @@ public class Moto {
     public ArrayList<Acessorio> Acessorios;
 
     public Moto(
-                int CD_MOTO, com.example.locadoraempinamoto.model.Categoria.Moto CATMOTO, String DS_MARCA, String DS_MODELO,
-                int NR_ANO,  com.example.locadoraempinamoto.model.Categoria.Motor TP_MOTOR, float CP_TANQUE, float AV_CONSUMO,
-                float VL_CUSTO, ArrayList<Acessorio> Acessorios){
+            int CD_MOTO, CatMoto CATMOTO, String DS_MARCA, String DS_MODELO,
+            int NR_ANO, com.example.locadoraempinamoto.model.Categoria.Motor TP_MOTOR, float CP_TANQUE, float AV_CONSUMO,
+            float VL_CUSTO, ArrayList<Acessorio> Acessorios){
         this.CD_MOTO = CD_MOTO;
         this.CATMOTO = CATMOTO;
         this.DS_MARCA = DS_MARCA;

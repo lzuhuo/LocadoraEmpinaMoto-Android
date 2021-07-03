@@ -8,22 +8,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.locadoraempinamoto.R;
-import com.example.locadoraempinamoto.business.MotoDAOAccess;
 import com.example.locadoraempinamoto.databinding.FragmentMotoBinding;
 import com.example.locadoraempinamoto.model.Moto.Moto;
 import com.example.locadoraempinamoto.services.MotoService;
-import com.example.locadoraempinamoto.services.MotoServiceAccess;
 
 import java.util.ArrayList;
 
 public class MotoFragment extends Fragment implements View.OnClickListener {
 
-    private MotoViewModel homeViewModel;
     private FragmentMotoBinding binding;
 
     private RecyclerView recyclerView;
@@ -34,8 +30,6 @@ public class MotoFragment extends Fragment implements View.OnClickListener {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(MotoViewModel.class);
 
         binding = FragmentMotoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -43,16 +37,16 @@ public class MotoFragment extends Fragment implements View.OnClickListener {
 
 
         root = inflater.inflate(R.layout.fragment_moto, container, false);
-        recyclerView = root.findViewById(R.id.listVMotos);
+        recyclerView = root.findViewById(R.id.listVClientes);
 
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         listmotos = listaMotos();
 
-        adapter = new ListAdapter(listmotos, fr);
+        adapter = new MotoAdapter(listmotos, fr);
         recyclerView.setAdapter(adapter);
 
-        root.findViewById(R.id.addMoto).setOnClickListener(this);
+        root.findViewById(R.id.addCliente).setOnClickListener(this);
 
 
         return root;
@@ -74,7 +68,7 @@ public class MotoFragment extends Fragment implements View.OnClickListener {
     }
 
     public ArrayList<Moto> listaMotos(){
-        MotoServiceAccess motoService = new MotoServiceAccess(getContext());
+        MotoService motoService = new MotoService(getContext());
         return motoService.listarMotos();
     }
 }

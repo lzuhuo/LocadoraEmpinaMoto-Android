@@ -6,7 +6,7 @@
     android:background="?attr/selectableItemBackground" >
 
     <TextView
-        android:id="@+id/itemModelo"
+        android:id="@+id/itemCNH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -18,15 +18,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/itemMarca"
+        android:id="@+id/itemCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="TextView"
         android:textColor="#39393a"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/itemModelo"
-        app:layout_constraintTop_toBottomOf="@+id/itemModelo" />
+        app:layout_constraintStart_toStartOf="@+id/itemCNH"
+        app:layout_constraintTop_toBottomOf="@+id/itemCNH" />
 
     <TextView
         android:id="@+id/itemValor"
@@ -35,17 +35,17 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/itemAno"
+        app:layout_constraintStart_toEndOf="@+id/itemNascimento"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/itemAno"
+        android:id="@+id/itemNascimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/itemModelo"
+        app:layout_constraintStart_toEndOf="@+id/itemCNH"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView

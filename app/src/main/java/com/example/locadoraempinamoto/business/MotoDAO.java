@@ -1,125 +1,158 @@
 package com.example.locadoraempinamoto.business;
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
-import java.sql.*;
-import java.util.ArrayList;
-
-import com.example.locadoraempinamoto.db.Config;
 import com.example.locadoraempinamoto.db.DatabaseAccess;
+import com.example.locadoraempinamoto.model.Categoria.Acessorio;
+import com.example.locadoraempinamoto.model.Categoria.CatMoto;
+import com.example.locadoraempinamoto.model.Categoria.Motor;
 import com.example.locadoraempinamoto.model.Message;
 import com.example.locadoraempinamoto.model.Moto.Moto;
-import com.example.locadoraempinamoto.model.Categoria.Acessorio;
 
-public class MotoDAO extends Config{
-    public ArrayList<Moto> getMoto(int CD_MOTO){
-        ArrayList<Moto> catMotos = new ArrayList<Moto>();
-        try{
-            Statement st = conexao.createStatement();
-            String sql =    " SELECT *                              " +
-                            " FROM motos AS MO                      " +
-                            " INNER JOIN categorias_motos as CS     " +
-                            " ON CS.CD_CATEGORIA = MO.CD_CATEGORIA  " +
-                            " INNER JOIN categorias_motor as CR     " +
-                            " ON CR.CD_MOTOR = MO.CD_MOTOR          " +
-                            " WHERE MO.CD_MOTO=" + CD_MOTO;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
-            ResultSet rs = st.executeQuery(sql);
-            
-            while (rs.next()) {
-                catMotos.add(new Moto(  rs.getInt("CD_MOTO"), 
-                                        new com.example.locadoraempinamoto.model.Categoria.Moto(rs.getInt("CD_CATEGORIA"), rs.getString("DS_CATEGORIA")),
-                                        rs.getString("DS_MARCA"), rs.getString("DS_MODELO"), rs.getInt("NR_ANO"),
-                                        new com.example.locadoraempinamoto.model.Categoria.Motor(rs.getInt("CD_MOTOR"),rs.getString("DS_MOTOR")),
-                                        rs.getFloat("CP_TANQUE"), rs.getFloat("AV_CONSUMO"), rs.getFloat("VL_CUSTO"),
-                                        new ArrayList<Acessorio>()
-                                    ));
-            }
-            return catMotos;  
-        }catch( SQLException e){ return null;}
+public class MotoDAO {
+    private DatabaseAccess dA;
+
+    public MotoDAO(Context context){
+        this.dA = DatabaseAccess.getInstance(context);
     }
 
-    public ArrayList<Moto> listarMotos(){
-        ArrayList<Moto> motos = new ArrayList<Moto>();
+    public ArrayList<Moto> getMoto(int CD_MOTO){
+        ArrayList<Moto> catMotos = new ArrayList<Moto>();
+        dA.open();
         try{
-            Statement st = conexao.createStatement();
-            String sql =    " SELECT *                              " +
-                            " FROM motos AS MO                      " +
-                            " INNER JOIN categorias_motos as CS     " +
-                            " ON CS.CD_CATEGORIA = MO.CD_CATEGORIA  " +
-                            " INNER JOIN categorias_motor as CR     " +
-                            " ON CR.CD_MOTOR = MO.CD_MOTOR          " +
-                            " WHERE MO.ST_ATIVO='S'                 " ;
 
-            ResultSet rs = st.executeQuery(sql);
-            
-            while (rs.next()) {
-                motos.add(new Moto(  rs.getInt("CD_MOTO"), 
-                                        new com.example.locadoraempinamoto.model.Categoria.Moto(rs.getInt("CD_CATEGORIA"), rs.getString("DS_CATEGORIA")),
-                                        rs.getString("DS_MARCA"), rs.getString("DS_MODELO"), rs.getInt("NR_ANO"),
-                                        new com.example.locadoraempinamoto.model.Categoria.Motor(rs.getInt("CD_MOTOR"),rs.getString("DS_MOTOR")),
-                                        rs.getFloat("CP_TANQUE"), rs.getFloat("AV_CONSUMO"), rs.getFloat("VL_CUSTO"),
-                                        new ArrayList<Acessorio>()
-                                    ));
+            String sql =    " SELECT *                              " +
+                    " FROM motos AS MO                      " +
+                    " INNER JOIN categorias_motos as CS     " +
+                    " ON CS.CD_CATEGORIA = MO.CD_CATEGORIA  " +
+                    " INNER JOIN categorias_motor as CR     " +
+                    " ON CR.CD_MOTOR = MO.CD_MOTOR          " +
+                    " WHERE MO.CD_MOTO=" + CD_MOTO;
+
+            Cursor c = dA.database.rawQuery(sql, null);
+
+            c.moveToFirst();
+            while (!c.isAfterLast()) {
+                catMotos.add(new Moto(  c.getInt(c.getColumnIndex("CD_MOTO")),
+                        new CatMoto(
+                                c.getInt(c.getColumnIndex("CD_CATEGORIA")),
+                                c.getString(c.getColumnIndex("DS_CATEGORIA"))),
+                        c.getString(c.getColumnIndex("DS_MARCA")),
+                        c.getString(c.getColumnIndex("DS_MODELO")),
+                        c.getInt(c.getColumnIndex("NR_ANO")),
+                        new Motor(
+                                c.getInt(c.getColumnIndex("CD_MOTOR")),
+                                c.getString(c.getColumnIndex("DS_MOTOR"))),
+                        c.getFloat(c.getColumnIndex("CP_TANQUE")),
+                        c.getFloat(c.getColumnIndex("AV_CONSUMO")),
+                        c.getFloat(c.getColumnIndex("VL_CUSTO")),
+                        new ArrayList<Acessorio>()
+                ));
+                c.moveToNext();
             }
-            return motos;  
-        }catch( SQLException e){ return null;}
+            c.close();
+            dA.close();
+            return catMotos;
+        }catch( Exception e){ return null;}
+    }
+
+    public ArrayList<Moto> getMotos() {
+        ArrayList<Moto> list = new ArrayList<>();
+        dA.open();
+        String sql =    " SELECT *                              " +
+                        " FROM motos AS MO                      " +
+                        " INNER JOIN categorias_motos as CS     " +
+                        " ON CS.CD_CATEGORIA = MO.CD_CATEGORIA  " +
+                        " INNER JOIN categorias_motor as CR     " +
+                        " ON CR.CD_MOTOR = MO.CD_MOTOR          " +
+                        " WHERE MO.ST_ATIVO='S'                 " ;
+
+        Cursor c = dA.database.rawQuery(sql, null);
+        c.moveToFirst();
+        while (!c.isAfterLast()) {
+            list.add(new Moto(c.getInt(c.getColumnIndex("CD_MOTO")),
+                    new CatMoto(
+                            c.getInt(c.getColumnIndex("CD_CATEGORIA")),
+                            c.getString(c.getColumnIndex("DS_CATEGORIA"))),
+                    c.getString(c.getColumnIndex("DS_MARCA")),
+                    c.getString(c.getColumnIndex("DS_MODELO")),
+                    c.getInt(c.getColumnIndex("NR_ANO")),
+                    new com.example.locadoraempinamoto.model.Categoria.Motor(
+                            c.getInt(c.getColumnIndex("CD_MOTOR")),
+                            c.getString(c.getColumnIndex("DS_MOTOR"))),
+                    c.getFloat(c.getColumnIndex("CP_TANQUE")),
+                    c.getFloat(c.getColumnIndex("AV_CONSUMO")),
+                    c.getFloat(c.getColumnIndex("VL_CUSTO")),
+                    new ArrayList<Acessorio>()
+            ));
+            c.moveToNext();
+        }
+        c.close();
+        dA.close();
+        return list;
     }
 
     public Message adicionaMoto(Moto m){
         Message resp;
         int codigo = -1;
         try{
-            Statement st = conexao.createStatement();
-            st.executeUpdate("INSERT INTO motos VALUES (NULL ," +
-                            "" + m.CATMOTO.CD_CATEGORIA + "," + 
-                            "'" + m.DS_MARCA + "'," + 
-                            "'" + m.DS_MODELO + "'," + 
-                            "" + m.NR_ANO + "," + 
-                            "" + m.TP_MOTOR.CD_MOTOR + "," + 
-                            "" + m.CP_TANQUE + "," + 
-                            "" + m.AV_CONSUMO + "," +
-                            "" + m.VL_CUSTO + "," + 
-                            "'" + m.ST_ATIVO + "'" + 
-                            ")"    
-                            );
-            ResultSet rs = st.getGeneratedKeys();
-            if (rs.next()) {
-                codigo = rs.getInt(1);
-            }
-            resp = new Message(true, "success",codigo);
-            rs.close();
+            dA.open();
+            ContentValues values = new ContentValues();
+
+            values.put("CD_CATEGORIA", m.CATMOTO.CD_CATEGORIA);
+            values.put("DS_MARCA", m.DS_MARCA);
+            values.put("DS_MODELO", m.DS_MODELO);
+            values.put("NR_ANO", m.NR_ANO);
+            values.put("CD_MOTOR", m.TP_MOTOR.CD_MOTOR);
+            values.put("CP_TANQUE", m.CP_TANQUE);
+            values.put("AV_CONSUMO", m.AV_CONSUMO);
+            values.put("VL_CUSTO", m.VL_CUSTO);
+            values.put("ST_ATIVO", m.ST_ATIVO);
+
+            codigo = (int) dA.database.insert("motos", null, values);
+
+            resp = new Message(true, "success", codigo);
+
+            dA.close();
             return resp;
-        }catch (SQLException e) {
+        }catch (Exception e) {
             resp = new Message(false, "error:CA+M" + e.toString(), codigo);
             return resp;
         }
     }
 
-    //CAM
     public Message atualizaMoto(Moto m){
         Message resp;
         int codigo = -1;
         try{
-            Statement st = conexao.createStatement();
-            st.executeUpdate("UPDATE motos SET " +
-                            "CD_MOTO=" + m.CD_MOTO + ", " + 
-                            "CD_CATEGORIA=" + m.CATMOTO.CD_CATEGORIA + ", " + 
-                            "DS_MARCA='" + m.DS_MARCA + "', " + 
-                            "DS_MODELO='" + m.DS_MODELO + "', " + 
-                            "NR_ANO=" + m.NR_ANO + ", " + 
-                            "CD_MOTOR=" + m.TP_MOTOR.CD_MOTOR + ", " + 
-                            "CP_TANQUE=" + m.CP_TANQUE + ", " + 
-                            "AV_CONSUMO=" + m.AV_CONSUMO + ", " +
-                            "VL_CUSTO=" + m.VL_CUSTO + ", " + 
-                            "ST_ATIVO='" + m.ST_ATIVO + "' " + 
-                            "WHERE CD_MOTO=" + m.CD_MOTO    
-                            );
-            
+            dA.open();
+            ContentValues values = new ContentValues();
+
+            values.put("CD_CATEGORIA", m.CATMOTO.CD_CATEGORIA);
+            values.put("DS_MARCA", m.DS_MARCA);
+            values.put("DS_MODELO", m.DS_MODELO);
+            values.put("NR_ANO", m.NR_ANO);
+            values.put("CD_MOTOR", m.TP_MOTOR.CD_MOTOR);
+            values.put("CP_TANQUE", m.CP_TANQUE);
+            values.put("AV_CONSUMO", m.AV_CONSUMO);
+            values.put("VL_CUSTO", m.VL_CUSTO);
+            values.put("ST_ATIVO", m.ST_ATIVO);
+
+            dA.database.update("motos", values, "CD_MOTO=" + m.CD_MOTO,null);
+
             resp = new Message(true, "success",m.CD_MOTO );
-            
+            dA.close();
+
             return resp;
-        }catch (SQLException e) {
+        }catch (Exception e) {
             resp = new Message(false, "error:CAM" + e.toString(), codigo);
             return resp;
         }
@@ -127,11 +160,11 @@ public class MotoDAO extends Config{
 
     public Boolean removeMoto(int CD_MOTO){
         try{
-            Statement st = conexao.createStatement();
-            String sql =    " DELETE FROM motos" +
-                            " WHERE CD_MOTO=" + CD_MOTO;
-            st.executeUpdate(sql);
-            return true;  
-        }catch( SQLException e){ return false;}
+            dA.open();
+            dA.database.execSQL(" DELETE FROM motos WHERE CD_MOTO=" + CD_MOTO);
+            dA.close();
+            Log.d("RMoto","Remove Moto");
+            return true;
+        }catch( Exception e){ return false;}
     }
 }

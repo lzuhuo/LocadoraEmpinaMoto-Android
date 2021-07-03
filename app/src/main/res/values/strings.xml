@@ -118,4 +118,10 @@
     <string name="motoAcessorio">Acessórios</string>
     <string name="buttonSave">Salvar</string>
     <string name="buttonCancel">Cancelar</string>
+    <string name="motoAcessorio01">Porta de energia DC</string>
+    <string name="motoAcessorio02">Rádio/CD Player</string>
+    <string name="motoAcessorio03">Wind Shield</string>
+    <string name="clienteNome">Nome</string>
+    <string name="clienteNascimento">Data Nascimento</string>
+    <string name="clienteCNH">CNH</string>
 </resources>
