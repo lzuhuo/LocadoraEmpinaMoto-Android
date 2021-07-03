@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.moto.MotoItemFragment">
+
+        <TextView
+            android:id="@+id/clienteNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/clienteNome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/clienteNomeField" />
+
+        <EditText
+            android:id="@+id/clienteNomeField"
+            android:layout_width="230dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/clienteNascimento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/clienteNascimento"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/clienteNascimentoField" />
+
+        <EditText
+            android:id="@+id/clienteNascimentoField"
+            android:layout_width="230dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/fieldLeft"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clienteNomeField" />
+
+        <TextView
+            android:id="@+id/clienteCNH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/clienteCNH"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/clienteCNHField" />
+
+        <EditText
+            android:id="@+id/clienteCNHField"
+            android:layout_width="230dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/fieldLeft"
+            android:layout_marginTop="@dimen/fieldTop"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clienteNascimentoField" />
+
+        <Button
+            android:id="@+id/clienteSave"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:text="@string/buttonSave"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clienteCNHField" />
+
+        <Button
+            android:id="@+id/clienteCancel"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="44dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:text="@string/buttonCancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/clienteSave" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+
