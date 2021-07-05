@@ -59,7 +59,7 @@ public class ClienteItemController {
     public void setData(Cliente cliente){
 
         clienteNomeField.setText(cliente.NM_CLIENTE);
-        clienteNascimentoField.setText(cliente.DT_NASCIMENTO);
+        clienteNascimentoField.setText(Util.dataFormatSQLReverse(cliente.DT_NASCIMENTO));
         clienteCNHField.setText(cliente.NR_CNH);
 
     }
