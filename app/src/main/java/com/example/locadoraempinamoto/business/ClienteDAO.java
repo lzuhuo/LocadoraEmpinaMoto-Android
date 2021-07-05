@@ -46,7 +46,7 @@ public class ClienteDAO{
         try{
             dA.open();
             String sql =    "SELECT * FROM clientes " +
-                            "WHERE NR_CNH LIKE '" + NR_CNH + "%'";
+                            "WHERE NR_CNH LIKE '" + NR_CNH + "%' LIMIT 10";
 
             Cursor c = dA.database.rawQuery(sql, null);
 

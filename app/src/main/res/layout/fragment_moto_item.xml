@@ -191,7 +191,7 @@
             app:layout_constraintTop_toBottomOf="@+id/motoValorCustoField" />
 
         <Button
-            android:id="@+id/clienteSave"
+            android:id="@+id/locacaoSave"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
@@ -200,14 +200,14 @@
             app:layout_constraintTop_toBottomOf="@+id/motoAcessorio03" />
 
         <Button
-            android:id="@+id/clienteCancel"
+            android:id="@+id/locacaoCancel"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="44dp"
             android:backgroundTint="@android:color/holo_red_light"
             android:text="@string/buttonCancel"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/clienteSave" />
+            app:layout_constraintTop_toTopOf="@+id/locacaoSave" />
 
         <CheckBox
             android:id="@+id/motoAcessorio01"

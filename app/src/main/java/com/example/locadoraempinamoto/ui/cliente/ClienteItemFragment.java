@@ -17,9 +17,7 @@ import com.example.locadoraempinamoto.R;
 import com.example.locadoraempinamoto.databinding.FragmentClienteItemBinding;
 import com.example.locadoraempinamoto.model.Cliente.Cliente;
 import com.example.locadoraempinamoto.model.Message;
-import com.example.locadoraempinamoto.model.Moto.Moto;
 import com.example.locadoraempinamoto.services.ClienteService;
-import com.example.locadoraempinamoto.services.MotoService;
 
 public class ClienteItemFragment extends Fragment implements View.OnClickListener {
 
@@ -82,7 +80,7 @@ public class ClienteItemFragment extends Fragment implements View.OnClickListene
         }else{
             message = clienteService.inserirCliente(cliente);
             if(message.status){
-                builder.setMessage(message.toString());
+                builder.setMessage("Registro criado com sucesso!");
             }else{
                 builder.setMessage(message.toString());
             }

@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        tools:context=".ui.locacao.LocacaoItemFragment">
+
+        <TextView
+            android:id="@+id/clienteNome"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/clienteNome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/clienteNomeField" />
+
+        <EditText
+            android:id="@+id/clienteNomeField"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/clienteNome"
+            app:layout_constraintTop_toBottomOf="@+id/clienteCNHField" />
+
+        <TextView
+            android:id="@+id/clienteNascimento"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/locacaoIdade"
+            app:layout_constraintStart_toEndOf="@+id/clienteCNHField"
+            app:layout_constraintTop_toTopOf="@+id/clienteNascimentoField" />
+
+        <EditText
+            android:id="@+id/clienteNascimentoField"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/clienteNascimento"
+            app:layout_constraintTop_toTopOf="@+id/clienteCNHField" />
+
+        <TextView
+            android:id="@+id/clienteCNH"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/clienteCNH"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/clienteCNHField" />
+
+        <EditText
+            android:id="@+id/clienteCNHField"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="number"
+            app:layout_constraintStart_toEndOf="@+id/clienteCNH"
+            app:layout_constraintTop_toBottomOf="@+id/searchViewCNH" />
+
+        <Button
+            android:id="@+id/locacaoSave"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/buttonSave"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custoMotoField" />
+
+        <Button
+            android:id="@+id/locacaoCancel"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="44dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:text="@string/buttonCancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/locacaoSave" />
+
+        <SearchView
+            android:id="@+id/searchViewCNH"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pesquisaCliente"
+            app:layout_constraintTop_toBottomOf="@+id/infoCliente" >
+
+        </SearchView>
+
+        <TextView
+            android:id="@+id/pesquisaCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/pesquisaCliente"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/searchViewCNH" />
+
+        <View
+            android:id="@+id/dividerCliente"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clienteNomeField" />
+
+        <TextView
+            android:id="@+id/locacaoInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/locacaoInfo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dividerCliente" />
+
+        <TextView
+            android:id="@+id/infoCliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/infoCliente"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/locacaoLocalRetirada"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/locacaoRetirada"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/locacaoLocalRetiradaField" />
+
+        <EditText
+            android:id="@+id/locacaoLocalRetiradaField"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/locacaoLocalRetirada"
+            app:layout_constraintTop_toBottomOf="@+id/locacaoInfo" />
+
+        <TextView
+            android:id="@+id/locacaoLocalDevolucao"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/locacaoDevolucao"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/locacaoLocalDevolucaoField" />
+
+        <EditText
+            android:id="@+id/locacaoLocalDevolucaoField"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/locacaoLocalDevolucao"
+            app:layout_constraintTop_toBottomOf="@+id/locacaoLocalRetiradaField" />
+
+        <TextView
+            android:id="@+id/locacaoDataRetirada"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/locacaoDataRetirada"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/locacaoDataRetiradaField" />
+
+        <EditText
+            android:id="@+id/locacaoDataRetiradaField"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/locacaoDataRetirada"
+            app:layout_constraintTop_toBottomOf="@+id/locacaoLocalDevolucaoField" />
+
+        <TextView
+            android:id="@+id/locacaoDataDevolucao"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/locacaoDataDevolucao"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/locacaoDataDevolucaoField" />
+
+        <EditText
+            android:id="@+id/locacaoDataDevolucaoField"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/locacaoDataDevolucao"
+            app:layout_constraintTop_toBottomOf="@+id/locacaoDataRetiradaField" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/locacaoDataDevolucaoField" />
+
+        <TextView
+            android:id="@+id/motoInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/motoInfo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+        <TextView
+            android:id="@+id/motoMarca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/motoMarca"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/motoMarcaField" />
+
+        <Spinner
+            android:id="@+id/motoMarcaField"
+            android:layout_width="135dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toEndOf="@+id/motoMarca"
+            app:layout_constraintTop_toBottomOf="@+id/motoInfo" />
+
+        <TextView
+            android:id="@+id/motoModelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/motoModelo"
+            app:layout_constraintEnd_toStartOf="@+id/motoModeloField"
+            app:layout_constraintTop_toTopOf="@+id/motoModeloField" />
+
+        <Spinner
+            android:id="@+id/motoModeloField"
+            android:layout_width="135dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/motoMarcaField" />
+
+        <TextView
+            android:id="@+id/motoOpcionais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/motoOpcionais"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/motoOpcional01" />
+
+        <CheckBox
+            android:id="@+id/motoOpcional01"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/motoOpcional01"
+            app:layout_constraintStart_toEndOf="@+id/motoOpcionais"
+            app:layout_constraintTop_toBottomOf="@+id/motoMarcaField" />
+
+        <CheckBox
+            android:id="@+id/motoOpcional02"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/motoOpcional02"
+            app:layout_constraintStart_toStartOf="@+id/motoOpcional01"
+            app:layout_constraintTop_toBottomOf="@+id/motoOpcional01" />
+
+        <CheckBox
+            android:id="@+id/motoOpcional03"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/motoOpcional03"
+            app:layout_constraintStart_toEndOf="@+id/motoOpcional01"
+            app:layout_constraintTop_toTopOf="@+id/motoOpcional01" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/locacaoStatusField" />
+
+        <TextView
+            android:id="@+id/custosInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/custosInfo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+        <TextView
+            android:id="@+id/custoMoto"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/custoMoto"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/custoDiarias" />
+
+        <TextView
+            android:id="@+id/custoDiarias"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/custoDiarias"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@+id/custoMoto"
+            app:layout_constraintTop_toBottomOf="@+id/custosInfo" />
+
+        <TextView
+            android:id="@+id/custoOpcional"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="@string/custoOpcional"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@+id/custoTotal"
+            app:layout_constraintTop_toTopOf="@+id/custoDiarias" />
+
+        <TextView
+            android:id="@+id/custoTotal"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="@string/custoTotal"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/custoOpcional" />
+
+        <EditText
+            android:id="@+id/custoMotoField"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/custoMoto"
+            app:layout_constraintTop_toBottomOf="@+id/custoMoto" />
+
+        <EditText
+            android:id="@+id/custoDiariasField"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/custoDiarias"
+            app:layout_constraintTop_toBottomOf="@+id/custoDiarias" />
+
+        <EditText
+            android:id="@+id/custoOpcionalField"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/custoOpcional"
+            app:layout_constraintTop_toBottomOf="@+id/custoOpcional" />
+
+        <EditText
+            android:id="@+id/custoTotalField"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/custoTotal"
+            app:layout_constraintTop_toBottomOf="@+id/custoTotal" />
+
+        <TextView
+            android:id="@+id/iconvezes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="*"
+            app:layout_constraintEnd_toStartOf="@+id/custoDiariasField"
+            app:layout_constraintStart_toEndOf="@+id/custoMotoField"
+            app:layout_constraintTop_toTopOf="@+id/custoDiariasField" />
+
+        <TextView
+            android:id="@+id/iconSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="+"
+            app:layout_constraintEnd_toStartOf="@+id/custoOpcionalField"
+            app:layout_constraintStart_toEndOf="@+id/custoDiariasField"
+            app:layout_constraintTop_toTopOf="@+id/custoOpcionalField" />
+
+        <TextView
+            android:id="@+id/iconIgual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="="
+            app:layout_constraintEnd_toStartOf="@+id/custoTotalField"
+            app:layout_constraintStart_toEndOf="@+id/custoOpcionalField"
+            app:layout_constraintTop_toTopOf="@+id/custoOpcionalField" />
+
+        <Spinner
+            android:id="@+id/locacaoStatusField"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toEndOf="@+id/locacaoStatus"
+            app:layout_constraintTop_toBottomOf="@+id/motoOpcional02" />
+
+        <TextView
+            android:id="@+id/locacaoStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/locacaoStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/locacaoStatusField" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

@@ -13,11 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.locadoraempinamoto.R;
 import com.example.locadoraempinamoto.databinding.FragmentClienteBinding;
-import com.example.locadoraempinamoto.databinding.FragmentMotoBinding;
 import com.example.locadoraempinamoto.model.Cliente.Cliente;
-import com.example.locadoraempinamoto.model.Moto.Moto;
 import com.example.locadoraempinamoto.services.ClienteService;
-import com.example.locadoraempinamoto.services.MotoService;
 
 import java.util.ArrayList;
 

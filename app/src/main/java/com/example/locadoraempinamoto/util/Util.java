@@ -1,4 +1,4 @@
-package util;
+package com.example.locadoraempinamoto.util;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
